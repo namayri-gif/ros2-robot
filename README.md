@@ -143,13 +143,16 @@ Robot moves forward, backward, and rotates left/right via teleop, with wheels ro
 `/odom` updates continuously with correct position and orientation while driving
 LiDAR link, mesh reference, and `gpu_lidar` sensor plugin are correctly defined; `/scan` is published on the Gazebo side and successfully bridged to ROS 2
 Final TF tree is fully connected: `odom → base_link → {lidar_link, 4× wheel links}`, with no disconnected frames
-Known Limitation
-Visual confirmation of LaserScan data in RViz (Part 12) and full mesh rendering of the LiDAR sensor in the 3D Simulator were affected by a confirmed platform-side rendering issue 
-in the simulator's sensor pipeline, acknowledged by course staff during this task. All underlying configuration — URDF mesh/sensor definitions, the `gpu_lidar` plugin, and the `/scan` topic 
-bridge — was implemented and verified correct via `ros2 topic list` and `ros2 topic echo`; the remaining issue is a known simulator rendering bug rather than an error in this package.
 
 ---
+### Known Limitations
+1) Visual confirmation of LaserScan data in RViz (Part 12) and full mesh rendering of the LiDAR sensor in the 3D Simulator were affected by a confirmed platform-side rendering issue 
+in the simulator's sensor pipeline, acknowledged by course staff during this task. All underlying configuration — URDF mesh/sensor definitions, the `gpu_lidar` plugin, and the `/scan` topic 
+bridge — was implemented and verified correct via `ros2 topic list` and `ros2 topic echo`; the remaining issue is a known simulator rendering bug rather than an error in this package.
+2) Part 10 was completed but as mentioned in the email, the lidar was not being registered in the URDF. This may be to an issue in my code or due to the software issue mentioned earlier
+---
 URDF View (VS Code URDF Visualizer):
+
 <img width="247" height="148" alt="Screenshot 2026-06-22 171900" src="https://github.com/user-attachments/assets/11541ddc-a8ba-4db1-8aaf-4b5224d21b9e" />
 
 RViz — Robot Model & TF:
@@ -169,6 +172,9 @@ TF Tree (`ros2 run tf2_tools view_frames`):
 <img width="1004" height="341" alt="Screenshot 2026-06-23 141514" src="https://github.com/user-attachments/assets/b1838580-8a3e-401d-a9c9-849e77abc1cb" />
 
 Demo Video Link
+
+
+https://github.com/user-attachments/assets/8d5c92e4-7e56-4d62-8125-c6f9988aa91f
 
 
 

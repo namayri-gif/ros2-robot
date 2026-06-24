@@ -4,6 +4,7 @@ from launch import LaunchDescription
 from launch.actions import IncludeLaunchDescription, TimerAction
 from launch.launch_description_sources import PythonLaunchDescriptionSource
 from launch_ros.actions import Node
+import xacro
 
 
 def generate_launch_description():
@@ -11,11 +12,10 @@ def generate_launch_description():
     pkg_ros_gz_sim = get_package_share_directory('ros_gz_sim')
     pkg_turtlebot3_gazebo = get_package_share_directory('turtlebot3_gazebo')
 
-    urdf_path = os.path.join(pkg_my_robot, 'urdf', 'robot.urdf')
+    urdf_path = os.path.join(pkg_my_robot, 'urdf', 'robot.urdf.xacro')
     world_path = os.path.join(pkg_turtlebot3_gazebo, 'worlds', 'turtlebot3_world.world')
 
-    with open(urdf_path, 'r') as f:
-        robot_description = f.read()
+   robot_description = xacro.process_file(urdf_path).toxml()
 
     gazebo = IncludeLaunchDescription(
         PythonLaunchDescriptionSource(

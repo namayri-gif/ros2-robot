@@ -7,7 +7,7 @@ import os
 
 def generate_launch_description():
     pkg_share = FindPackageShare(package='my_robot_description').find('my_robot_description')
-    urdf_path = os.path.join(pkg_share, 'urdf', 'robot.urdf')
+    urdf_path = os.path.join(pkg_share, 'urdf', 'robot.urdf.xacro')
 
     return LaunchDescription([
 

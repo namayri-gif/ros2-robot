@@ -169,7 +169,7 @@ Teleop Terminal:
 
 RViz — Odometry (Fixed Frame = odom):
 
-<img width="762" height="518" alt="Screenshot 2026-06-23 123716" src="https://github.com/user-attachments/assets/197a62de-21a3-45f8-8bb5-36f6dd8b38e0" />
+<img width="1061" height="672" alt="image" src="https://github.com/user-attachments/assets/a4e85e17-de21-409f-a0df-c7d13bf1f024" />
 
 URDF View (With Lidar "Cylinder")
 

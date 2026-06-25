@@ -179,6 +179,10 @@ TF Tree (`ros2 run tf2_tools view_frames`):
 
 <img width="953" height="336" alt="image" src="https://github.com/user-attachments/assets/3fe9a284-0371-4291-a972-213e9566c56d" />
 
+Errors: 
+
+<img width="374" height="184" alt="image" src="https://github.com/user-attachments/assets/0a38c8e4-b75d-45f9-a0be-e116d8922e07" />
+
 
 Demo Video Link
 

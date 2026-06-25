@@ -73,6 +73,14 @@ def generate_launch_description():
         ]
     )
 
+    joint_state_publisher = Node(
+        package="joint_state_publisher",
+        executable="joint_state_publisher",
+        name="joint_state_publisher",
+        output="screen",
+        parameters=[{'use_sim_time': True}],
+    )
+
     spawn_robot = Node(
         package='ros_gz_sim',
         executable='create',
@@ -104,5 +112,6 @@ def generate_launch_description():
         gazebo,
         robot_state_publisher,
         delayed_spawn,
-        bridge
+        bridge,
+        joint_state_publisher
     ])

@@ -145,12 +145,6 @@ LiDAR link, mesh reference, and `gpu_lidar` sensor plugin are correctly defined;
 Final TF tree is fully connected: `odom → base_link → {lidar_link, 4× wheel links}`, with no disconnected frames
 
 ---
-### Known Limitations
-1) Visual confirmation of LaserScan data in RViz (Part 12) and full mesh rendering of the LiDAR sensor in the 3D Simulator were affected by a confirmed platform-side rendering issue 
-in the simulator's sensor pipeline, acknowledged by course staff during this task. All underlying configuration — URDF mesh/sensor definitions, the `gpu_lidar` plugin, and the `/scan` topic 
-bridge — was implemented and verified correct via `ros2 topic list` and `ros2 topic echo`; the remaining issue is a known simulator rendering bug rather than an error in this package.
-2) Part 10 was completed but as mentioned in the email, the lidar was not being registered in the URDF. This may be to an issue in my code or due to the software issue mentioned earlier. When the mesh file was replaced with a simple cylinder, the object was realized, making it more likely to be an issue from the mesh file than the code itself.
----
 URDF View (VS Code URDF Visualizer):
 
 <img width="247" height="148" alt="Screenshot 2026-06-22 171900" src="https://github.com/user-attachments/assets/11541ddc-a8ba-4db1-8aaf-4b5224d21b9e" />
@@ -179,9 +173,9 @@ TF Tree (`ros2 run tf2_tools view_frames`):
 
 <img width="953" height="336" alt="image" src="https://github.com/user-attachments/assets/3fe9a284-0371-4291-a972-213e9566c56d" />
 
-Errors: 
+Lidar Scanning: 
 
-<img width="374" height="184" alt="image" src="https://github.com/user-attachments/assets/0a38c8e4-b75d-45f9-a0be-e116d8922e07" />
+<img width="915" height="665" alt="image" src="https://github.com/user-attachments/assets/aa4d4f2a-e2d8-4224-a160-1c81c9b65633" />
 
 
 Demo Video Link

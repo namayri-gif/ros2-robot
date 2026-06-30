@@ -112,5 +112,6 @@ def generate_launch_description():
         gazebo,
         robot_state_publisher,
         bridge,
-        joint_state_publisher
+        joint_state_publisher,
+        TimerAction(period=3.0, actions=[spawn_robot])
     ])

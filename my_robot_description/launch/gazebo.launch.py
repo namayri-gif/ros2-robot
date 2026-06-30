@@ -12,6 +12,7 @@ def generate_launch_description():
 
     pkg_share = get_package_share_directory('my_robot_description')
     turtlebot3_gazebo_share = get_package_share_directory('turtlebot3_gazebo')
+    meshes_path = os.path.join(pkg_share, 'meshes')
 
     world_file = os.path.join(
         turtlebot3_gazebo_share,

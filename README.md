@@ -102,7 +102,51 @@ source install/setup.bash
 ```
 ---
 ### How to Run
-
+Step 1 — Visualize the robot in RViz (no physics)
+```bash
+rviz2
+```
+### Verify: robot appears correctly, TF frames are visible, no RViz errors.
+Step 2 — Simulate the robot in Gazebo
+```bash
+ros2 launch ros2-robot gazebo.launch.py
+```
+This launches `gz sim` with the `turtlebot3_world`, spawns the robot, starts `robot_state_publisher`, and bridges all required topics between Gazebo and ROS 2.
+Step 3 — Control the robot with Teleop
+```bash
+ros2 run teleop_twist_keyboard teleop_twist_keyboard
+```
+Key	Action
+`i`	Forward
+`,`	Backward
+`j`	Rotate left
+`l`	Rotate right
+`k`	Stop
+### Step 4 — Verify Odometry
+```bash
+ros2 topic echo /odom
+```
+In RViz: set Fixed Frame = odom, add RobotModel, TF, Odometry.
+### Step 5 — Verify LiDAR
+```bash
+ros2 topic list | grep scan
+ros2 topic echo /scan --once
+```
+### Step 6 — Verify the TF Tree
+```bash
+ros2 run tf2_tools view_frames
+```
+---
+### Expected Final TF Tree
+```
+odom
+ └── base_footprint
+      └── base_link
+           ├── lidar_link
+           ├── left_wheel_link
+           ├── right_wheel_link
+           └── caster_wheel_link
+```
 ---
 ### Verification
 The system was tested using a custom 3-wheel differential drive robot in `gz sim` (Gazebo Harmonic), spawned inside `turtlebot3_world`. The following was verified:

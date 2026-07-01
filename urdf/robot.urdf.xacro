@@ -4,19 +4,19 @@
     <xacro:include filename="$(find ros2-robot)/urdf/robot.gazebo.xacro"/>
     <xacro:arg name="mesh_path" default="package://ros2-robot/meshes/"/>
     
-    <xacro:property name="base_radius" value="0.4"/>
-    <xacro:property name="base_length"  value="0.25"/>
+    <xacro:property name="base_radius" value="0.25"/>
+    <xacro:property name="base_length"  value="0.15"/>
     <xacro:property name="base_mass"   value="3.0"/>
 
-    <xacro:property name="wheel_radius" value="0.07"/>
+    <xacro:property name="wheel_radius" value="0.05"/>
     <xacro:property name="wheel_length" value="0.02"/>
     <xacro:property name="wheel_mass"   value="0.5"/>
 
-    <xacro:property name="wheel_x_offset" value="0.15"/>
-    <xacro:property name="wheel_y_offset" value="0.25"/>
-    <xacro:property name="wheel_z_offset" value="-0.13"/>
+    <xacro:property name="wheel_x_offset" value="0.10"/>
+    <xacro:property name="wheel_y_offset" value="0.15"/>
+    <xacro:property name="wheel_z_offset" value="-0.08"/>
 
-    <xacro:property name="caster_radius" value="0.06"/>
+    <xacro:property name="caster_radius" value="0.05"/>
     <xacro:property name="caster_mass" value="0.03"/>
 
     <xacro:property name="lidar_radius" value="0.06"/>
@@ -110,13 +110,13 @@
                 <inertia
                     ixx="${(2/5) * caster_mass * caster_radius * caster_radius}"
                     ixy="0.0" ixz="0.0"
-                    iyy="${(2/5) * caster_mass * caster_radius * caster_radius}}"
+                    iyy="${(2/5) * caster_mass * caster_radius * caster_radius}"
                     iyz="0.0"
-                    izz="${(1/2) * caster_mass * (caster_radius*caster_radius)}"/>
+                    izz="${(2/5) * caster_mass * caster_radius * caster_radius}"/>
             </inertial>
             <visual>
                 <origin xyz="0 0 0" rpy="1.5708 0 0"/>
-                <geometry><sphere radius="${caster_radius}"></geometry>
+                <geometry><sphere radius="${caster_radius}"/></geometry>
                 <material name="caster_color"><color rgba="0.0 0.0 0.0 1.0"/></material>
             </visual>
             <collision>

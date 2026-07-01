@@ -164,40 +164,36 @@ URDF View (VS Code URDF Visualizer):
 
 <img width="430" height="246" alt="Screenshot 2026-07-01 150744" src="https://github.com/user-attachments/assets/9816bc39-f7aa-4fba-9d6b-5c6e810009a2" />
 
-
 RViz — Robot Model & TF:
 
-<img width="762" height="518" alt="Screenshot 2026-06-23 123716" src="https://github.com/user-attachments/assets/619ede01-0107-4ed0-ab87-497d0a79c536" />
+<img width="988" height="477" alt="Screenshot 2026-07-01 165056" src="https://github.com/user-attachments/assets/ef4450a3-6b4e-49a7-9d97-c886c20bc191" />
 
 Gazebo Simulation (robot spawned in turtlebot3_world):
 
-<img width="669" height="378" alt="Screenshot 2026-06-22 171932" src="https://github.com/user-attachments/assets/dd15539c-df5f-459b-a637-2837cb81580e" />
+<img width="996" height="478" alt="Screenshot 2026-07-01 165048" src="https://github.com/user-attachments/assets/3792ab57-c34f-40ff-9319-d9b6a6ea23f0" />
 
 Teleop Terminal:
 
-<img width="937" height="507" alt="Screenshot 2026-06-22 173122" src="https://github.com/user-attachments/assets/c91ef0c4-1e7f-4b8c-89fe-ebf85c4dee88" />
+<img width="932" height="585" alt="Screenshot 2026-07-01 165133" src="https://github.com/user-attachments/assets/f1e04552-46d8-4556-861a-add318b1b57a" />
 
-RViz — Odometry (Fixed Frame = odom):
-
-<img width="1061" height="672" alt="image" src="https://github.com/user-attachments/assets/a4e85e17-de21-409f-a0df-c7d13bf1f024" />
 
 URDF View (With Lidar "Cylinder")
 
-<img width="214" height="175" alt="image" src="https://github.com/user-attachments/assets/73379417-0649-455e-8eea-93b1e6eebd47" />
+<img width="863" height="676" alt="Screenshot 2026-07-01 165125" src="https://github.com/user-attachments/assets/0e6950d7-ed0f-4f4d-b983-ea9aff18f330" />
 
 TF Tree (`ros2 run tf2_tools view_frames`):
 
-<img width="953" height="336" alt="image" src="https://github.com/user-attachments/assets/3fe9a284-0371-4291-a972-213e9566c56d" />
+<img width="980" height="399" alt="Screenshot 2026-07-01 165116" src="https://github.com/user-attachments/assets/b98bcebc-0bda-4926-b11e-318c078afaa2" />
 
 Lidar Scanning: 
 
-<img width="915" height="665" alt="image" src="https://github.com/user-attachments/assets/aa4d4f2a-e2d8-4224-a160-1c81c9b65633" />
-
+<img width="975" height="464" alt="Screenshot 2026-07-01 165106" src="https://github.com/user-attachments/assets/8107dadd-7fb7-4b33-b33e-67f53572b110" />
 
 Demo Video Link
 
 
-https://github.com/user-attachments/assets/8d5c92e4-7e56-4d62-8125-c6f9988aa91f
+
+https://github.com/user-attachments/assets/a955b45e-7173-4053-93ea-ce7d4252e9be
 
 
 

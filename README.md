@@ -5,9 +5,24 @@ The robot is a three-wheel differential drive platform, simulated with a Gazebo 
 This assignment covers the complete ROS 2 robot simulation workflow: building a robot from URDF, visualizing it in RViz, simulating it in Gazebo, controlling it via keyboard teleoperation, and adding LiDAR sensing.
 
 ---
-## Objectives
--
--
+## Objective
+In this task, you will build a complete mobile robot simulation from scratch using URDF, TF, RViz, and Gazebo.
+
+By the end of this task, you should have:
+
+* A cylindrical 3-wheeled robot: two driven wheels (front-left, front-right) and one passive caster wheel for support
+* A differential-drive base controlled via the two driven wheels
+* A valid TF tree
+* A robot visualized in RViz
+* A robot simulated in Gazebo
+* Keyboard control using Teleop
+* Odometry publishing on `/odom`
+* A 180° front-facing LiDAR sensor publishing `/scan`
+* LaserScan visualization in RViz
+
+This task is designed to help you understand the complete ROS 2 robot simulation workflow — from writing a URDF, to wiring up TF and sensor/actuator plugins, to visualizing and driving the robot in both RViz and Gazebo.
+
+---
 
 ---
 ## Project Structure

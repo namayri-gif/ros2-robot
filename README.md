@@ -82,59 +82,15 @@ Gazebo Sim (`gz sim`, Harmonic) via `ros_gz_sim` / `ros_gz_bridge`
 ## Build
 ```bash
 cd ~/ros2_ws
-colcon build --packages-select my_robot_description
+colcon build --packages-select ros2-robot
 source install/setup.bash
 ```
 ---
 ### How to Run
-Step 1 — Visualize the robot in RViz (no physics)
-```bash
-ros2 launch my_robot_description display.launch.py
-```
-### Verify: robot appears correctly, TF frames are visible, no RViz errors.
-Step 2 — Simulate the robot in Gazebo
-```bash
-ros2 launch my_robot_description gazebo.launch.py
-```
-This launches `gz sim` with the `turtlebot3_world`, spawns the robot, starts `robot_state_publisher`, and bridges all required topics between Gazebo and ROS 2.
-Step 3 — Control the robot with Teleop
-```bash
-ros2 run teleop_twist_keyboard teleop_twist_keyboard
-```
-Key	Action
-`i`	Forward
-`,`	Backward
-`j`	Rotate left
-`l`	Rotate right
-`k`	Stop
-### Step 4 — Verify Odometry
-```bash
-ros2 topic echo /odom
-```
-In RViz: set Fixed Frame = odom, add RobotModel, TF, Odometry.
-### Step 5 — Verify LiDAR
-```bash
-ros2 topic list | grep scan
-ros2 topic echo /scan --once
-```
-### Step 6 — Verify the TF Tree
-```bash
-ros2 run tf2_tools view_frames
-```
----
-### Expected Final TF Tree
-```
-odom
- └── base_link (base_footprint)
-      ├── lidar_link
-      ├── left_front_wheel_link
-      ├── right_front_wheel_link
-      ├── left_back_wheel_link
-      └── right_back_wheel_link
-```
+
 ---
 ### Verification
-The system was tested using a custom 4-wheel differential drive robot in `gz sim` (Gazebo Harmonic), spawned inside `turtlebot3_world`. The following was verified:
+The system was tested using a custom 3-wheel differential drive robot in `gz sim` (Gazebo Harmonic), spawned inside `turtlebot3_world`. The following was verified:
 Robot URDF loads with no XML errors, no floating links
 Robot displays correctly in RViz with a fully connected TF tree
 Robot spawns successfully in Gazebo, stable and above the ground plane
@@ -142,7 +98,7 @@ Robot spawns successfully in Gazebo, stable and above the ground plane
 Robot moves forward, backward, and rotates left/right via teleop, with wheels rotating correctly
 `/odom` updates continuously with correct position and orientation while driving
 LiDAR link, mesh reference, and `gpu_lidar` sensor plugin are correctly defined; `/scan` is published on the Gazebo side and successfully bridged to ROS 2
-Final TF tree is fully connected: `odom → base_link → {lidar_link, 4× wheel links}`, with no disconnected frames
+Final TF tree is fully connected: `odom → base_footprint → base_link → {lidar_link, 2× wheel links}`, with no disconnected frames
 
 ---
 URDF View (VS Code URDF Visualizer):

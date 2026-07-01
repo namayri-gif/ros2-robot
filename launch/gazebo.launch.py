@@ -10,7 +10,7 @@ from launch_ros.parameter_descriptions import ParameterValue
 
 def generate_launch_description():
 
-    pkg_share = get_package_share_directory('my_robot_description')
+    pkg_share = get_package_share_directory('ros2-robot')
     turtlebot3_gazebo_share = get_package_share_directory('turtlebot3_gazebo')
     meshes_path = os.path.join(pkg_share, 'meshes')
 
@@ -90,7 +90,7 @@ def generate_launch_description():
         executable='create',
         arguments=[
             '-topic', 'robot_description',
-            '-name', 'my_robot',
+            '-name', 'robot-file',
             '-x', '-2.0',
             '-y', '0.5',
             '-z', '0.2',

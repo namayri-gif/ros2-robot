@@ -1,15 +1,13 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
 
-    <xacro:property name="wheel_y_offset" value="0.15"/>
+    <xacro:property name="wheel_y_offset" value="0.25"/>
     <xacro:property name="wheel_radius"   value="0.07"/>
 
     <gazebo>
         <plugin name="gz::sim::systems::DiffDrive" filename="gz-sim-diff-drive-system">
             <left_joint>left_front_wheel_joint</left_joint>
-            <left_joint>left_back_wheel_joint</left_joint>
             <right_joint>right_front_wheel_joint</right_joint>
-            <right_joint>right_back_wheel_joint</right_joint>
 
             <wheel_separation>${2 * wheel_y_offset}</wheel_separation>
             <wheel_diameter>${2 * wheel_radius}</wheel_diameter>
@@ -38,9 +36,7 @@
     <gazebo>
         <plugin name="gz::sim::systems::JointStatePublisher" filename="gz-sim-joint-state-publisher-system">
             <joint_name>left_front_wheel_joint</joint_name>
-            <joint_name>left_back_wheel_joint</joint_name>
             <joint_name>right_front_wheel_joint</joint_name>
-            <joint_name>right_back_wheel_joint</joint_name>
             <update_rate>30</update_rate>
         </plugin>
     </gazebo>
@@ -65,8 +61,8 @@
                     <horizontal>
                         <samples>720</samples>
                         <resolution>1</resolution>
-                        <min_angle>-3.14</min_angle>
-                        <max_angle>3.14</max_angle>
+                        <min_angle>-1.57</min_angle>
+                        <max_angle>1.57</max_angle>
                     </horizontal>
                     <vertical>
                         <samples>1</samples>

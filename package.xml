@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
 <package format="3">
-  <name>my_robot_description</name>
+  <name>ros2-robot</name>
   <version>0.0.1</version>
   <description>Differential drive robot with LiDAR - Task 4</description>
   <maintainer email="you@example.com">your_name</maintainer>

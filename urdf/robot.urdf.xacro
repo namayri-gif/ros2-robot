@@ -1,22 +1,23 @@
 <?xml version="1.0"?>
-<robot name="my_robot" xmlns:xacro="http://www.ros.org/wiki/xacro">
+<robot name="robot-file" xmlns:xacro="http://www.ros.org/wiki/xacro">
 
-
-    <xacro:include filename="$(find my_robot_description)/urdf/robot.gazebo.xacro"/>
-    <xacro:arg name="mesh_path" default="package://my_robot_description/meshes/"/>
+    <xacro:include filename="$(find ros2-robot)/urdf/robot.gazebo.xacro"/>
+    <xacro:arg name="mesh_path" default="package://ros2-robot/meshes/"/>
     
-    <xacro:property name="base_length" value="0.3"/>
-    <xacro:property name="base_width"  value="0.3"/>
-    <xacro:property name="base_height" value="0.2"/>
-    <xacro:property name="base_mass"   value="5.0"/>
+    <xacro:property name="base_radius" value="0.4"/>
+    <xacro:property name="base_length"  value="0.25"/>
+    <xacro:property name="base_mass"   value="3.0"/>
 
     <xacro:property name="wheel_radius" value="0.07"/>
     <xacro:property name="wheel_length" value="0.02"/>
-    <xacro:property name="wheel_mass"   value="1.0"/>
+    <xacro:property name="wheel_mass"   value="0.5"/>
 
-    <xacro:property name="wheel_x_offset" value="0.1"/>
-    <xacro:property name="wheel_y_offset" value="0.15"/>
-    <xacro:property name="wheel_z_offset" value="-0.1"/>
+    <xacro:property name="wheel_x_offset" value="0.15"/>
+    <xacro:property name="wheel_y_offset" value="0.25"/>
+    <xacro:property name="wheel_z_offset" value="-0.13"/>
+
+    <xacro:property name="caster_radius" value="0.06"/>
+    <xacro:property name="caster_mass" value="0.03"/>
 
     <xacro:property name="lidar_radius" value="0.06"/>
     <xacro:property name="lidar_length" value="0.04"/>
@@ -38,18 +39,18 @@
             <origin xyz="0 0 0" rpy="0 0 0"/>
             <mass value="${base_mass}"/>
             <inertia
-                ixx="${(1/12) * base_mass * (base_width*base_width + base_height*base_height)}"
-                ixy="0.0" ixz="0.0"
-                iyy="${(1/12) * base_mass * (base_length*base_length + base_height*base_height)}"
-                iyz="0.0"
-                izz="${(1/12) * base_mass * (base_length*base_length + base_width*base_width)}"/>
+               ixx="${(1/12) * base_mass * (3*base_radius*base_radius + base_length*base_length)}"
+                    ixy="0.0" ixz="0.0"
+                    iyy="${(1/12) * base_mass * (3*base_radius*base_radius + base_length*base_length)}"
+                    iyz="0.0"
+                    izz="${(1/2) * base_mass * (base_radius*base_radius)}"/>
         </inertial>
         <visual>
-            <geometry><box size="${base_length} ${base_width} ${base_height}"/></geometry>
-            <material name="chassis_color"><color rgba="0.5 0.5 0.0 1.0"/></material>
+            <geometry><cylinder radius="${base_radius}" length= "${base_length}"/></geometry>
+            <material name="chassis_color"><color rgba="0.4 0.5 0.3 1.0"/></material>
         </visual>
         <collision>
-            <geometry><box size="${base_length} ${base_width} ${base_height}"/></geometry>
+            <geometry><cylinder radius="${base_radius}" length= "${base_length}"/></geometry>
         </collision>
     </link>
 
@@ -102,9 +103,39 @@
         </joint>
     </xacro:macro>
 
+    <xacro:macro name="caster_wheel" params="prefix x_reflect y_reflect">
+        <link name="${prefix}_caster_link">
+            <inertial>
+                <mass value="${caster_mass}"/>
+                <inertia
+                    ixx="${(2/5) * caster_mass * caster_radius * caster_radius}"
+                    ixy="0.0" ixz="0.0"
+                    iyy="${(2/5) * caster_mass * caster_radius * caster_radius}}"
+                    iyz="0.0"
+                    izz="${(1/2) * caster_mass * (caster_radius*caster_radius)}"/>
+            </inertial>
+            <visual>
+                <origin xyz="0 0 0" rpy="1.5708 0 0"/>
+                <geometry><sphere radius="${caster_radius}"></geometry>
+                <material name="caster_color"><color rgba="0.0 0.0 0.0 1.0"/></material>
+            </visual>
+            <collision>
+                <origin xyz="0 0 0" rpy="1.5708 0 0"/>
+                <geometry><sphere radius="${caster_radius}"/></geometry>
+            </collision>
+        </link>
+        <joint name="${prefix}_caster_joint" type="fixed">
+            <parent link="base_link"/>
+            <child link="${prefix}_caster_link"/>
+            <origin xyz="${x_reflect * wheel_x_offset} ${y_reflect * wheel_y_offset} ${wheel_z_offset}" rpy="0 0 0"/>
+            <axis xyz="0 1 0"/>
+        </joint>
+    </xacro:macro>
+
     <xacro:wheel prefix="left_front"  x_reflect="1"  y_reflect="1"/>
     <xacro:wheel prefix="right_front" x_reflect="1"  y_reflect="-1"/>
-    <xacro:wheel prefix="left_back"   x_reflect="-1" y_reflect="1"/>
-    <xacro:wheel prefix="right_back"  x_reflect="-1" y_reflect="-1"/>
+
+    <xacro:caster_wheel prefix="rear" x_reflect="-1.2" y_reflect="0"/>
+    
 
 </robot>

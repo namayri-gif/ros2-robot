@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
 
-    <xacro:property name="wheel_y_offset" value="0.15"/>
+    <xacro:property name="wheel_y_offset" value="0.075"/>
     <xacro:property name="wheel_radius"   value="0.05"/>
 
     <gazebo>
@@ -81,10 +81,9 @@
             <visualize>true</visualize>
         </sensor>
     </gazebo>
-
+    
     <gazebo reference="camera_link">
         <sensor name="rgb_camera" type="camera">
-
             <topic>/camera/image_raw</topic>
             <update_rate>10</update_rate>
             <gz_frame_id>camera_optical_link</gz_frame_id>
@@ -107,6 +106,6 @@
             <always_on>true</always_on>
             <visualize>true</visualize>
         </sensor>
-    </gazebo> 
+    </gazebo>
 
 </robot>

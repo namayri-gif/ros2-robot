@@ -54,7 +54,7 @@
                     ixy="0.0" ixz="0.0"
                     iyy="${(1/12) * base_mass * (base_height*base_height + base_length*base_length)}"
                     iyz="0.0"
-                    izz="${(1/2) * base_mass * (base_width*base_width +  base_length*base_length)}"/>
+                    izz="${(1/12) * base_mass * (base_width*base_width +  base_length*base_length)}"/>
         </inertial>
         <visual>
             <geometry><box size="${base_length} ${base_width} ${base_height}"/></geometry>
